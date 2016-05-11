@@ -1,0 +1,32 @@
+/* 
+  File.strings
+  ios_nest_client
+
+  Created by Bondar, Alexey on 5/3/16.
+  Copyright © 2016 ScienceSoft. All rights reserved.
+*/
+
+/*NCAuthenticationViewController*/
+"authenticationView_navigationTitle" = "NEST login";
+"alertView_errorTitle" = "Error";
+"alertView_button_OK" = "OK";
+
+/*NCDevicesTableViewController*/
+"devicesTableView_navigationTitle" = "NEST Devices";
+"devicesTableView_thermostatsSection_title" = "Thermostats";
+"devicesTableView_protectsSection_title" = "Smoke CO alarms";
+"devicesTableView_camerasSection_title" = "Cameras";
+"devicesTableView_navigation_logoutTitle" = "Logout";
+
+/*NCThermostatCell*/
+"thermostatCell_targetTemperatureText" = "current";
+"thermostatCell_currentTemperatureShortText" = "current";
+"thermostatCell_humidityText" = "humidity";
+
+/*NCThermostatStatus*/
+"thermostatStatus_off" = "OFF";
+
+/*NCProtectCell*/
+"protectCell_coLabel_text" = "CO";
+"protectCell_smokeLabel_text" = "SMOKE";
+"protectCell_batteryLabel_text" = "BATTERY";

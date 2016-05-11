@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  ios_nest_client
+//
+//  Created by Bondar, Alexey on 5/3/16.
+//  Copyright © 2016 ScienceSoft. All rights reserved.
+//
+
+#ifndef InCode_prefix_pch
+#define InCode_prefix_pch
+
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import "NCConstants.h"
+
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+
+#endif /* ios_nest_client_prefix_pch */
