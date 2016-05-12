@@ -106,6 +106,7 @@
                     <connections>
                         <action selector="targetTemperatureChanged:" destination="-1" eventType="valueChanged" id="2he-8A-TIW"/>
                         <action selector="targetTemperatureTouchUpInside:" destination="-1" eventType="touchUpInside" id="wyN-bU-3Td"/>
+                        <action selector="targetTemperatureTouchUpOutside:" destination="-1" eventType="touchUpOutside" id="TEY-3G-FQG"/>
                     </connections>
                 </slider>
             </subviews>
