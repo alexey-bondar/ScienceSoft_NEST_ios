@@ -11,7 +11,6 @@
 #import "NCThermostat.h"
 #import "UIColor+CustomColors.h"
 #import "NCThermostatStatus.h"
-#import "NCFirebaseManager.h"
 
 @interface NCThermostatDetailsViewController ()
 
@@ -25,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *heatingModeImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *fanModeImageView;
 
-@property (nonatomic, strong) id<NCFirebaseManagerProtocol> firebaseManager;
+@property (nonatomic, strong) NCNestThermostatManager *nestThermostatManager;
 
 - (void)_updateWithThermostatStatus:(NCThermostatStatus *)status;
 - (void)_updateFanModeWithThermostatStatus:(NCThermostatStatus *)status;
@@ -44,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _firebaseManager = [NCFirebaseManager sharedInstance];
+    _nestThermostatManager = [NCNestThermostatManager new];
     
     CGAffineTransform trans = CGAffineTransformMakeRotation(-M_PI_2);
     self.targetTemperatureSlider.transform = trans;
@@ -202,15 +201,11 @@
 }
 
 - (IBAction)targetTemperatureTouchUpInside:(id)sender {
-    NSMutableDictionary *values = [[NSMutableDictionary alloc] init];
-    
-    if (self.thermostat.temperatureScaleType == NCThermostatTemperatureScaleF) {
-        [values setValue:[NSNumber numberWithInteger:self.thermostat.targetTemperatureF] forKey:kTargetTemperatureF];
-    } else {
-        [values setValue:[NSNumber numberWithInteger:self.thermostat.targetTemperatureC] forKey:kTargetTemperatureC];
-    }
-    
-    [self.firebaseManager setValues:values forURL:[NSString stringWithFormat:@"%@/%@/", kThermostatPath, self.thermostat.thermostatId]];
+    [self.nestThermostatManager saveChangesForThermostat:self.thermostat];
+}
+
+- (IBAction)targetTemperatureTouchUpOutside:(id)sender {
+    [self.nestThermostatManager saveChangesForThermostat:self.thermostat];
 }
 
 @end

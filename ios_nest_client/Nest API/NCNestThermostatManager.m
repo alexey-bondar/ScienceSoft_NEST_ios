@@ -110,7 +110,11 @@
 {
     NSMutableDictionary *values = [[NSMutableDictionary alloc] init];
     
-    [values setValue:[NSNumber numberWithInteger:thermostat.targetTemperatureF] forKey:kTargetTemperatureF];
+    if (thermostat.temperatureScaleType == NCThermostatTemperatureScaleF) {
+        [values setValue:[NSNumber numberWithInteger:thermostat.targetTemperatureF] forKey:kTargetTemperatureF];
+    } else {
+        [values setValue:[NSNumber numberWithInteger:thermostat.targetTemperatureC] forKey:kTargetTemperatureC];
+    }
     
     [self.firebaseManager setValues:values forURL:[NSString stringWithFormat:@"%@/%@/", kThermostatPath, thermostat.thermostatId]];
 }
